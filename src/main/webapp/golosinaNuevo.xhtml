@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+  <ui:param name="título" value="Pasatiempo Nuevo"/>
+  <h:head>
+    <meta charset="UTF-8" />
+    <title>#{título}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <h:outputStylesheet library="css" name="estilos.css"/>
+  </h:head>
+  <h:body>
+    <h:form prependId="false">
+      <header>
+        <!-- ancla que abre una página de JSF. -->
+        <h:link value="Cancelar⁬⁬⁬" outcome="index"/>
+        <h:commandButton type="submit" value="Guardar"
+                         action="#{ctrlGolosinaNuevo.guarda()}"/>
+        <h1>#{título}</h1>
+      </header>
+      <h:messages globalOnly="true"/>
+      <p>
+        <h:inputText id="nombre" p:placeholder="Nombre"
+                     value="#{ctrlGolosinaNuevo.modelo.nombre}"/>
+        <h:message for="nombre"/><br/><br/>
+        <h:inputText p:placeholder="Precio" p:type="number" p:step="00.01"
+                     value="#{ctrlGolosinaNuevo.modelo.precio}">
+        </h:inputText>
+        <h:message for="precio"/>
+      </p>
+      <ezcomp:golosina-footer></ezcomp:golosina-footer>
+    </h:form>
+  </h:body>
+</html>
+
